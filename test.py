@@ -8,7 +8,7 @@ rocket = Rocket(100, 0, 7E6, 7543, 0, 0)
 time_target = 5000
 h = 10
 
-For rocket.time_log[-1] < time_target:
-    rocket.update_position_and_velocity(G, h, EARTH_MASS, 0, 0)
+#for rocket.time_log[-1] in < time_target:
+ #   rocket.update_position_and_velocity(G, h, EARTH_MASS, 0, 0)
 
 
