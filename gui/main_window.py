@@ -4,10 +4,10 @@ from PyQt6.QtWidgets import (
 from PyQt6.QtCore import pyqtSlot
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
-from Resources.planet_constants import G_CONSTANT, EARTH_MASS, EARTH_RADIUS, MOON_MASS, MOON_RADIUS, MOON_DISTANCE
+from simulation.planet_constants import G_CONSTANT, EARTH_MASS, EARTH_RADIUS, MOON_MASS, MOON_RADIUS, MOON_DISTANCE
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
-from rocket import Rocket
+from simulation.rocket import Rocket
 
 class MainWindow(QMainWindow):
     def __init__(self):
