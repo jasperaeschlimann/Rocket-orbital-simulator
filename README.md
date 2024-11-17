@@ -29,7 +29,7 @@ To get started, clone the repository and install the required dependencies.
    First, clone the repository from GitHub:
    ```bash
    git clone https://github.com/jasperaeschlimann/Rocket-orbital-simulator.git
-   cd rocket-simulation-gui
+   cd Rocket-orbital-simulator
    ```
 
 2. **Set Up a Virtual Environment**  
