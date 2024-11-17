@@ -1,5 +1,5 @@
 # Gravitational Constant
-G = 6.67430e-11  # in m^3 kg^-1 s^-2
+G_CONSTANT = 6.67430e-11  # in m^3 kg^-1 s^-2
 
 # Earth
 EARTH_MASS = 5.972e24  # in kilograms

@@ -62,7 +62,7 @@ class Rocket:
         total_gpe = gpe_earth + gpe_moon
         return total_gpe
     
-    def acceleration_x(G: float, Mass_Earth: float, Mass_Moon: float, x: float, y: float, Moon_Distance: float) -> float:
+    def acceleration_x(self, G: float, Mass_Earth: float, Mass_Moon: float, x: float, y: float, Moon_Distance: float) -> float:
         """
         The function uses the gravitational forces of the Earth and the Moon to compute the 
         acceleration in the x direction, based on the rocket's x and y coordinates.
@@ -81,7 +81,7 @@ class Rocket:
         acceleration_x=-((G*Mass_Earth*x)/(((x**2)+(y**2))**(3/2)))-((G*Mass_Moon*(x-Moon_Distance))/(abs(math.sqrt(((x-Moon_Distance)**2)+(y**2)))**3))
         return acceleration_x
     
-    def acceleration_y(G: float, Mass_Earth: float, Mass_Moon: float, x: float, y: float, Moon_Distance: float) -> float:
+    def acceleration_y(self, G: float, Mass_Earth: float, Mass_Moon: float, x: float, y: float, Moon_Distance: float) -> float:
         """
         The function uses the gravitational forces of the Earth and the Moon to compute the 
         acceleration in the y direction, based on the rocket's x and y coordinates.
@@ -114,32 +114,32 @@ class Rocket:
         #First Runge Kutta evaluations 
         kutta_1x = self.velocity_x
         kutta_1y = self.velocity_y
-        kutta_1vx = self.acceleration_x (G, Mass_Earth, Mass_Moon, self.x, self.y, Moon_Distance)
-        kutta_1vy = self.acceleration_y (G, Mass_Earth, Mass_Moon, self.x, self.y, Moon_Distance)
+        kutta_1vx = self.acceleration_x(G, Mass_Earth, Mass_Moon, self.x, self.y, Moon_Distance)
+        kutta_1vy = self.acceleration_y(G, Mass_Earth, Mass_Moon, self.x, self.y, Moon_Distance)
 
         #Second Runge Kutta evaluations 
         kutta_2x = self.velocity_x + (h*kutta_1vx)/2
         kutta_2y = self.velocity_y + (h*kutta_1vy)/2
         a = self.x + (h*kutta_1x)/2
         b = self.y + (h*kutta_1y)/2
-        kutta_2vx = self.acceleration_x (G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
-        kutta_2vy = self.acceleration_y (G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
+        kutta_2vx = self.acceleration_x(G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
+        kutta_2vy = self.acceleration_y(G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
 
         #Third Runge Kutta evaluations 
         kutta_3x = self.velocity_x + (h*kutta_2vx)/2
         kutta_3y = self.velocity_y + (h*kutta_2vy)/2
         a = self.x +(h*kutta_2x)/2
         b = self.y + (h*kutta_2y)/2
-        kutta_3vx = self.acceleration_x (G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
-        kutta_3vy = self.acceleration_y (G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
+        kutta_3vx = self.acceleration_x(G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
+        kutta_3vy = self.acceleration_y(G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
 
         #Fourth Runge Kutta evaluations 
         kutta_4x = self.velocity_x + (h*kutta_3vx)
         kutta_4y = self.velocity_y + (h*kutta_3vy)
         a = self.x +(h*kutta_3x)
         b = self.y + (h*kutta_3y)       
-        kutta_4vx = self.acceleration_x (G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
-        kutta_4vy = self.acceleration_y (G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
+        kutta_4vx = self.acceleration_x(G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
+        kutta_4vy = self.acceleration_y(G, Mass_Earth, Mass_Moon, a, b, Moon_Distance)
 
         #Position, velocity, and time updates
         x_plus1 = self.x + ((h/6)*(kutta_1x+(2*kutta_2x)+(2*kutta_3x)+kutta_4x))
